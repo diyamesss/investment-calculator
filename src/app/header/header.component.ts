@@ -9,4 +9,7 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
 
+  get imagePath(){
+    return "investment-calculator-logo.png"
+  }
 }
