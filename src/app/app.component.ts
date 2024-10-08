@@ -7,8 +7,8 @@ import { InvestmmentResultComponent } from './investmment-result/investmment-res
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [HeaderComponent, CalculatorInputComponent, InvestmmentResultComponent],
+  standalone: false,
+  // imports: [HeaderComponent, CalculatorInputComponent, InvestmmentResultComponent],
   templateUrl: './app.component.html',
 })
 export class AppComponent {
@@ -21,21 +21,22 @@ export class AppComponent {
   //   totalInterest: number;
   //   totalAmountInvested: number;
   // }[];
-  resultData = signal<
-    | {
-        year: number;
-        interest: number;
-        valueEndOfYear: number;
-        annualInvestment: number;
-        totalInterest: number;
-        totalAmountInvested: number;
-      }[]
-    | undefined
-  >(undefined);
+  // resultData = signal<
+  //   | {
+  //       year: number;
+  //       interest: number;
+  //       valueEndOfYear: number;
+  //       annualInvestment: number;
+  //       totalInterest: number;
+  //       totalAmountInvested: number;
+  //     }[]
+  //   | undefined
+  // >(undefined);
 
   onCalculate(calculatorInput: CalculatorInput) {
-    this.resultData.set(
-      this.calculator.calculateInvestmentResults(calculatorInput)
-    );
+    // this.resultData.set(
+    //   this.calculator.calculateInvestmentResults(calculatorInput)
+    // );
+    this.calculator.calculateInvestmentResults(calculatorInput);
   }
 }
