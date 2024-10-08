@@ -27,3 +27,8 @@ jobs:
     - run: npm ci
     - run: npm run build --if-present
     # - run: npm test
+    
+    - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist/investment-calculator # The folder the action should deploy.
