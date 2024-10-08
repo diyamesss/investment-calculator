@@ -29,6 +29,7 @@ jobs:
     # - run: npm test
     
     - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          folder: dist/investment-calculator # The folder the action should deploy.
+      uses: JamesIves/github-pages-deploy-action@v4
+      with:
+        folder: dist/investment-calculator
+        ssh-key: ${{ secrets.INVESTMENT_CALCULATOR_TOKEN }}
