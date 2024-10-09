@@ -56,11 +56,6 @@ jobs:
           name: 'github-pages'
       - name: Output files
         run: ls
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
-        with:
-          artifact_name: 'github-pages'
       - name: Deploy to gh pages
         run: npx angular-cli-ghpages --dir=dist/investment-calculator
         env:
