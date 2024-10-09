@@ -34,7 +34,7 @@ jobs:
         uses: actions/jekyll-build-pages@v1
         with:
           source: ./
-          destination: ./_site
+          destination: ./dist/investment-calculator/browser/
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
