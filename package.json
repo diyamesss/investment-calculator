@@ -9,6 +9,7 @@
     "test": "ng test"
   },
   "private": true,
+  "homepage": "./",
   "dependencies": {
     "@angular/animations": "^18.0.0",
     "@angular/common": "^18.0.0",
