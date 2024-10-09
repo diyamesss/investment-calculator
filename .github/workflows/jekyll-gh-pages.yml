@@ -39,7 +39,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           # upload entire directory
-          path: './dist/investment-calculator'
+          path: './_site'
 
   # Deployment job
   deploy:
