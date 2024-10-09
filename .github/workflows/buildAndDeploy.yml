@@ -37,7 +37,7 @@ jobs:
       with:
           # upload entire directory
           name: 'investment-calculator'
-          path: 'dist'
+          path: 'dist/investment-calculator/browser'
     # - run: npm test
     
   # Deployment job
