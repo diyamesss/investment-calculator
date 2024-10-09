@@ -59,5 +59,7 @@ jobs:
       - name: Deploy to gh pages
         run: npx angular-cli-ghpages --dir=dist/investment-calculator
         env:
+         name: github-pages
+         url: ${{ steps.deployment.outputs.page_url }}
          CI: true
          GH_TOKEN: ${{ secrets.INVESTMENT_CALCULATOR_TOKEN }}
