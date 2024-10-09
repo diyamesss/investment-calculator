@@ -1,6 +1,17 @@
+import { Injectable, signal } from '@angular/core';
 import { CalculatorInput } from './calculator-input/calculator-input.model';
 
+@Injectable({ providedIn: 'root' })
 export class AppService {
+  resultData = signal<{
+    year: number;
+    interest: number;
+    valueEndOfYear: number;
+    annualInvestment: number;
+    totalInterest: number;
+    totalAmountInvested: number;
+  }[] | undefined>(undefined);
+
   calculateInvestmentResults(calculatorInput: CalculatorInput) {
     const annualData = [];
     let investmentValue = calculatorInput.initialInvestment;
@@ -27,6 +38,6 @@ export class AppService {
       });
     }
 
-    return annualData;
+    this.resultData?.set(annualData);
   }
 }
