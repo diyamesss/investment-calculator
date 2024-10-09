@@ -22,7 +22,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: node-app
-          path: dist/angular-workflow-example/browser
+          path: dist/investment-calculator/browser
   deploy:
 
     runs-on: ubuntu-latest
