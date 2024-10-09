@@ -1,36 +1,44 @@
-# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
+name: Angular Build and Test
 
-name: Investment Calculator Angular Build
-
-on:
-  push:
-    branches: [ "main", "develop" ]
+on: [ push ]
 
 jobs:
   build:
 
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [22.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+      - name: Install dependencies
+        run: npm install
+      - name: Build
+        run: npm run build
+      - name: Setup Chrome
+        uses: browser-actions/setup-chrome@latest
+      - name: Test
+        run: npm run test:ci
+      - name: Upload artifact for deployment job
+        uses: actions/upload-artifact@v4
+        with:
+          name: node-app
+          path: dist/angular-workflow-example/browser
+  deploy:
+
+    runs-on: ubuntu-latest
+
+    needs: build
+    environment:
+      name: 'Production'
+      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v4
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: npm ci
-    - run: npm run build --if-present
-    # - run: npm tes
-    - name: Deploy to gh pages
-      run: |
-        npx angular-cli-ghpages --dir=./dist/investment-calculator/browser
-      env:
-        CI: true
-        GH_TOKEN: ${{ secrets.INVESTMENT_CALCULATOR_TOKEN }}
-
+      - name: Download artifact from build job
+        uses: actions/download-artifact@v4
+        with:
+          name: node-app
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
