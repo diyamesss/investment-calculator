@@ -33,7 +33,7 @@ jobs:
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
         with:
-          source: ./dist/investment-calculator/browser
+          source: ./
           destination: ./_site
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
@@ -50,6 +50,12 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
+      - name: Get build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: 'github-pages'
+      - name: Output files
+        run: ls
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
