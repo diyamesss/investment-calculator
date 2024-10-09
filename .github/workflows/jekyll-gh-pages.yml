@@ -33,7 +33,7 @@ jobs:
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
         with:
-          source: ./
+          source: ./dist/investment-calculator/browser
           destination: ./_site
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
@@ -41,7 +41,7 @@ jobs:
           # upload entire directory
           name: 'github-pages'
           path: './_site'
-
+          
   # Deployment job
   deploy:
     environment:
