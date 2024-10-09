@@ -29,7 +29,7 @@ jobs:
     # - run: npm test
     - name: Deploy to gh pages
       run: |
-        npx angular-cli-ghpages --dir=dist/investment-calculator/browser
+        npx angular-cli-ghpages --dir=./dist/investment-calculator/browser
       env:
         CI: true
         GH_TOKEN: ${{ secrets.INVESTMENT_CALCULATOR_TOKEN }}
