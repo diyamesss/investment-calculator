@@ -23,7 +23,7 @@ jobs:
       - name: Install dependencies
         run: npm install
       - name: Build
-        run: npm run build
+        run: npm run build --base-href /investment-calculator/
       - name: Setup Chrome
         uses: browser-actions/setup-chrome@latest
       - name: Upload artifact for deployment job
