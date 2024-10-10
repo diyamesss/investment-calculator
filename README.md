@@ -10,4 +10,4 @@ This repository implements CI/CD with the use of github actions and github pages
 
 ### [Live Demo](https://diyamesss.github.io/investment-calculator/)
 
-https://github.com/user-attachments/assets/cc83d220-7294-4c29-b96e-2bde1af38e50
+![investment-calculator](https://github.com/user-attachments/assets/594e3fac-2499-41d3-8810-829a6730ca49)
